@@ -1,0 +1,17 @@
+.ast-node {
+    border: 1px solid #333;
+    padding: 5px 10px;
+    margin: 5px;
+    display: inline-block;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    font-family: monospace;
+    text-align: center;
+}
+
+.ast-children {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
