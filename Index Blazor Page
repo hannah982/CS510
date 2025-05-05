@@ -1,0 +1,22 @@
+@page "/"
+@using MicroMLAstApp.Parser
+@inject IJSRuntime JS
+
+<h1>MicroML AST Visualizer</h1>
+
+<textarea @bind="inputCode" placeholder="Enter MicroML code..." rows="5" cols="60"></textarea>
+<br />
+<button class="btn" @onclick="GenerateAST">Generate AST</button>
+
+<div id="astContainer" style="margin-top:20px;"></div>
+
+@code {
+    private string inputCode = "let x = 5 in x";
+
+    private async Task GenerateAST()
+    {
+        var expr = MicroMLParser.parse(inputCode);
+        var json = MicroMLParser.exprToJson(expr).ToString();
+        await JS.InvokeVoidAsync("renderAst", json);
+    }
+}
